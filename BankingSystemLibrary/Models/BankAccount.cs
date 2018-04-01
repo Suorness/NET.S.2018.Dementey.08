@@ -11,17 +11,16 @@
         private string _number;
         private string _lastName;
         private string _firstName;
-        private decimal _balance;
-        private int _bonus;
         #endregion private fields
 
-        protected BankAccount(string number, string lastName, string firstName, decimal balance, int bonus)
+        protected BankAccount(string number, string lastName, string firstName, decimal balance, int bonus, AccountType type)
         {
             Number = number ?? throw new ArgumentNullException(nameof(number));
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             Balance = balance;
             Bonus = bonus;
+            Type = type;
         }
 
         #region property
@@ -92,34 +91,24 @@
         /// <summary>
         /// Account balance.
         /// </summary>
-        public decimal Balance
-        {
-            get
-            {
-                return _balance;
-            }
-
-            private set
-            {
-                _balance = value;
-            }
-        }
+        public decimal Balance { get; private set; }
 
         /// <summary>
         /// Bonus points.
         /// </summary>
-        public int Bonus
-        {
-            get
-            {
-                return _bonus;
-            }
+        public int Bonus { get; private set; }
 
-            private set
-            {
-                _bonus = value;
-            }
-        }
+        /// <summary>
+        /// Account status.
+        /// </summary>
+        /// True - closed
+        /// False - opened
+        public bool Status { get; private set; }
+
+        /// <summary>
+        /// Returns the account type.
+        /// </summary>
+        public AccountType Type { get; }
         #endregion property
 
         #region public methods
@@ -173,6 +162,11 @@
                 throw new ArgumentException($"{nameof(amount)} The value must be greater than zero.");
             }
 
+            if (Status)
+            {
+                throw new InvalidOperationException("This account is closed.");
+            }
+
             Balance = Balance + amount;
             Bonus = Bonus + ReceivingBonusOnDepositMoney(amount, Balance);
         }
@@ -191,8 +185,23 @@
                 throw new ArgumentException($"{nameof(amount)} The value must be greater than zero.");
             }
 
+            if (Status)
+            {
+                throw new InvalidOperationException("This account is closed.");
+            }
+
             Balance = Balance - amount;
             Bonus = Bonus - ReceivingBonusOnWithdrawMoney(amount, Balance);
+        }
+
+        /// <summary>
+        /// Closing of the account.
+        /// </summary>
+        public void CloseAccount()
+        {
+            Balance = 0;
+            Bonus = 0;
+            Status = true;
         }
 
         /// <summary>

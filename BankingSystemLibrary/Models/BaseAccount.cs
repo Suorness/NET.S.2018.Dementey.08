@@ -4,7 +4,7 @@
     {
         private const int Coeff = 10;
 
-        protected BaseAccount(
+        public BaseAccount(
             string number,
             string lastName,
             string firstName,
@@ -14,7 +14,8 @@
                 lastName,
                 firstName,
                 balance,
-                bonus)
+                bonus,
+                AccountType.BaseAccount)
         {
         }
 

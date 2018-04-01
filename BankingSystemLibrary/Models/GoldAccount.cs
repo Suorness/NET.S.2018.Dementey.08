@@ -2,7 +2,7 @@
 {
     public class GoldAccount : BankAccount
     {
-        protected GoldAccount(
+        public GoldAccount(
             string number,
             string lastName,
             string firstName,
@@ -12,13 +12,14 @@
                 lastName,
                 firstName,
                 balance,
-                bonus)
+                bonus,
+                AccountType.GoldAccount)
         {
         }
 
         protected override int ReceivingBonusOnDepositMoney(decimal amount, decimal balance)
         {
-            return (int)(amount * 2 * balance);
+            return (int)((amount * 2 * balance) + 1);
         }
 
         protected override int ReceivingBonusOnWithdrawMoney(decimal amount, decimal balance)

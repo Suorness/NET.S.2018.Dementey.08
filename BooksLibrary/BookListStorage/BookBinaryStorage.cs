@@ -26,7 +26,7 @@
         public IEnumerable<Book> GetBooks()
         {
             var books = new List<Book>();
-            using (FileStream fs = File.OpenRead(_filePath))
+            using (FileStream fs = File.OpenWrite(_filePath))
             using (BinaryReader reader = new BinaryReader(fs))
             {
                 while (reader.PeekChar() > -1)

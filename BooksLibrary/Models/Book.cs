@@ -363,7 +363,7 @@
         /// <summary>
         /// A comparison of the two books is case-sensitive.
         /// </summary>
-        /// <param name="obj">The object to compare.</param>
+        /// <param name="other">The object to compare.</param>
         /// <returns>
         /// Less than zero. This instance precedes other in the sort order. 
         /// Zero. This instance occurs in the same position in the

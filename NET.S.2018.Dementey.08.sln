@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Tests", "BookLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleBooksLibrary", "ConsoleBooksLibrary\ConsoleBooksLibrary.csproj", "{A5BF18EF-961A-44D9-AF83-C63241AB6788}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSystemLibrary", "BankingSystemLibrary\BankingSystemLibrary.csproj", "{6B25F20F-1CA3-45AD-BF6C-0379A12FDC4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A5BF18EF-961A-44D9-AF83-C63241AB6788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BF18EF-961A-44D9-AF83-C63241AB6788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BF18EF-961A-44D9-AF83-C63241AB6788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B25F20F-1CA3-45AD-BF6C-0379A12FDC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B25F20F-1CA3-45AD-BF6C-0379A12FDC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B25F20F-1CA3-45AD-BF6C-0379A12FDC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B25F20F-1CA3-45AD-BF6C-0379A12FDC4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

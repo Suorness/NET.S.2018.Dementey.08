@@ -41,7 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="BookListService\BookListService.cs" />
+    <Compile Include="BookListService\Exceptions\BookServiceException.cs" />
+    <Compile Include="BookListService\IBookService.cs" />
+    <Compile Include="BookListStorage\Exceptions\BookStorageException.cs" />
+    <Compile Include="BookListStorage\IBookStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

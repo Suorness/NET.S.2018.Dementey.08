@@ -26,13 +26,21 @@
             int numbersOfPage,
             decimal cost)
         {
-            _isbn = isbn;
-            _author = author;
-            _title = title;
-            _publishingHouse = publishingHouse;
-            _year = year;
+            _isbn = isbn ?? throw new ArgumentNullException(nameof(isbn));
+            _author = author ?? throw new ArgumentNullException(nameof(author));
+            _title = title ?? throw new ArgumentNullException(nameof(title));
+            _publishingHouse = publishingHouse ?? throw new ArgumentNullException(nameof(publishingHouse));
+            _year = year ?? throw new ArgumentNullException(nameof(year));
             _numbersOfPage = numbersOfPage;
             _cost = cost;
+        }
+
+        public Book(Book book): this(book.Isbn,book.Author,book.Title, book.PublishingHouse, book.Year, book.NumbersOfPage, book.Cost)
+        {
+            if (ReferenceEquals(book,null))
+            {
+                throw new ArgumentNullException(nameof(book));
+            }
         }
 
         #region property

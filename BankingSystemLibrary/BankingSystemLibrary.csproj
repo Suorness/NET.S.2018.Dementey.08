@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\BankAccount.cs" />
+    <Compile Include="Models\BaseAccount.cs" />
+    <Compile Include="Models\GoldAccount.cs" />
+    <Compile Include="Models\PlatinumAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

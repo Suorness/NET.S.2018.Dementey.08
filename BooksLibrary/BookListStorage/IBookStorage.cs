@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace BooksLibrary.BookListStorage
+﻿namespace BooksLibrary.BookStorage
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The interface describing the interaction with the repository.
     /// </summary>

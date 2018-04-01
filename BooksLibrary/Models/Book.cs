@@ -35,9 +35,9 @@
             _cost = cost;
         }
 
-        public Book(Book book): this(book.Isbn,book.Author,book.Title, book.PublishingHouse, book.Year, book.NumbersOfPage, book.Cost)
+        public Book(Book book) : this(book.Isbn, book.Author, book.Title, book.PublishingHouse, book.Year, book.NumbersOfPage, book.Cost)
         {
-            if (ReferenceEquals(book,null))
+            if (ReferenceEquals(book, null))
             {
                 throw new ArgumentNullException(nameof(book));
             }

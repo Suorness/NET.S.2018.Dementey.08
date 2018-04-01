@@ -1,10 +1,11 @@
-﻿namespace BooksLibrary.BookListStorage.Exceptions
+﻿namespace BooksLibrary.BookStorage.Exceptions
 {
     using System;
+
     /// <summary>
     /// The exception class is thrown when there is a problem with the storage.
     /// </summary>
-    public class BookStorageException: Exception
+    public class BookStorageException : Exception
     {
         public BookStorageException()
         {

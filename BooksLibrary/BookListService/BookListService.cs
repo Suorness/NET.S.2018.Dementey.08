@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using BooksLibrary.BookListStorage;
-    using BooksLibrary.BookListStorage.Exceptions;
+    using BooksLibrary.BookStorage;
+    using BooksLibrary.BookStorage.Exceptions;
 
     /// <summary>
     /// The class that implements the interface <see cref="IBookService"/>
@@ -57,7 +57,7 @@
 
             bool presenceInTheRepository = false;
 
-            foreach(var bookItem in _books)
+            foreach (var bookItem in _books)
             {
                 if (bookItem == book)
                 {
@@ -73,7 +73,7 @@
                 {
                     _bookStorage.SetBooks(_books);
                 }
-                catch(BookStorageException e)
+                catch (BookStorageException e)
                 {
                     _books.Remove(book);
                     throw new BookServiceException("An error occurred while writing to the repository.", e);
@@ -108,7 +108,7 @@
                 throw new ArgumentNullException(nameof(isbn));
             }
 
-            foreach(var book in _books)
+            foreach (var book in _books)
             {
                 if (book.Isbn == isbn)
                 {
@@ -118,7 +118,6 @@
             }
 
             return resultBook;
-
         }
 
         /// <summary>
@@ -146,7 +145,7 @@
         /// </exception>
         public void RemoveBook(Book book)
         {
-            if (ReferenceEquals(book,null))
+            if (ReferenceEquals(book, null))
             {
                 throw new ArgumentNullException(nameof(book));
             }
@@ -157,7 +156,7 @@
                 {
                     _bookStorage.SetBooks(_books);
                 }
-                catch(BookStorageException e)
+                catch (BookStorageException e)
                 {
                     _books.Add(book);
                     throw new BookServiceException("An error occurred while writing to the repository.", e);

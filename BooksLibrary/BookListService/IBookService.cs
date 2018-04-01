@@ -57,6 +57,5 @@
         /// It is thrown out in case of service problems.
         /// </exception>
         IEnumerable<Book> GetBooks();
-
     }
 }

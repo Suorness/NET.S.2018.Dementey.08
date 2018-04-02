@@ -111,7 +111,7 @@
 
         private static void SortTest(IBookService service)
         {
-            ShowBooks(service.SortBooks());
+            ShowBooks(service.SortBooks(service.BookTitleComparer));
         }
     }
 }

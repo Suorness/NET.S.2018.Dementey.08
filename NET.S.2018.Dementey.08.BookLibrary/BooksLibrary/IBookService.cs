@@ -1,13 +1,28 @@
 ﻿namespace BookLibrary
 {
     using System.Collections.Generic;
-    using BookLibrary.Models;  
+    using BookLibrary.Models;
 
     /// <summary>
     /// An interface describing the operation of the service.
     /// </summary>
     public interface IBookService
     {
+        /// <summary>
+        /// Comparer from sort by Title.
+        /// </summary>
+        IComparer<Book> BookTitleComparer { get; }
+
+        /// <summary>
+        /// Comparer from sort by Isbn.
+        /// </summary>
+        IComparer<Book> BookIsbnComparer { get; }
+
+        /// <summary>
+        /// Comparer from sort by year.
+        /// </summary>
+        IComparer<Book> BookYearComparer { get; }
+
         /// <summary>
         /// Add <paramref name="book"/> to the storage.
         /// </summary>
@@ -46,7 +61,7 @@
         /// <returns>
         /// Sorted books.
         /// </returns>
-        IEnumerable<Book> SortBooks();
+        IEnumerable<Book> SortBooks(IComparer<Book> comparer);
 
         /// <summary>
         /// Returns all books from the repository.

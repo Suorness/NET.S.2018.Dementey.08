@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using BooksLibrary.Comparers;
     using BookStorage;
     using BookStorage.Exceptions;
     using Exceptions;
@@ -39,6 +40,21 @@
                 throw new BookServiceException("An error occurred while reading from the repository.", e);
             }
         }
+
+        /// <summary>
+        /// Comparer from sort by Title.
+        /// </summary>
+        public IComparer<Book> BookTitleComparer { get; } = new BookTitleComparer();
+
+        /// <summary>
+        /// Comparer from sort by Year.
+        /// </summary>
+        public IComparer<Book> BookYearComparer { get; } = new BookYearComparer();
+
+        /// <summary>
+        /// Comparer from sort by Isbn.
+        /// </summary>
+        public IComparer<Book> BookIsbnComparer { get; } = new BookIsbnComparer();
 
         /// <summary>
         /// Add <paramref name="book"/> to the storage.
@@ -178,10 +194,10 @@
         /// <returns>
         /// Sorted books.
         /// </returns>
-        public IEnumerable<Book> SortBooks()
+        public IEnumerable<Book> SortBooks(IComparer<Book> comparable)
         {
             var books = new List<Book>(_books);
-            books.Sort();
+            books.Sort(comparable);
             return books.ToArray();
         }
     }

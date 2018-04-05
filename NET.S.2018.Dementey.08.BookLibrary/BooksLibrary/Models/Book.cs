@@ -44,6 +44,9 @@
         {
         }
 
+        /// <summary>
+        /// Enumeration with available formats.
+        /// </summary>
         public enum OutputFormat
         {
             AT,
@@ -336,6 +339,13 @@
             return Isbn;
         }
 
+        /// <summary>
+        /// Returns the string representation of an object.
+        /// </summary>
+        /// <param name="format">Output format.</param>
+        /// <returns>
+        /// String representation of an book.
+        /// </returns>
         public string ToString(string format)
         {
             if (string.IsNullOrEmpty(format))
@@ -346,6 +356,14 @@
             return ToString(format, null);
         }
 
+        /// <summary>
+        ///  Formats the value of the current instance using the specified format.
+        /// </summary>
+        /// <param name="format">Output format.</param>
+        /// <param name="formatProvider">The provider to use to format the value.</param>
+        /// <returns>
+        /// String representation of an book.
+        /// </returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             if (ReferenceEquals(formatProvider, null))

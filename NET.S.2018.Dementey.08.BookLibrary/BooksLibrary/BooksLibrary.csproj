@@ -43,6 +43,7 @@
     <Compile Include="Comparers\BookIsbnComparer.cs" />
     <Compile Include="Comparers\BookTitleComparer.cs" />
     <Compile Include="Comparers\BookYearComparer.cs" />
+    <Compile Include="Formatters\BookFormatter.cs" />
     <Compile Include="Mappers\BookMapper.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="BookListService.cs" />

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using BookLibrary;
     using BookLibrary.Models;
+    using BooksLibrary.Formatters;
     using BookStorage;
 
     public class Program
@@ -29,6 +30,12 @@
 
                 Console.WriteLine("SortTest");
                 SortTest(bookService);
+
+                Console.WriteLine("FormatTest");
+                FormatTest(bookService);
+
+                Console.WriteLine("FormatExtensionTest");
+                FormatExtensionTest(bookService);
 
                 var books = bookService.GetBooks();
                 foreach (var book in books)
@@ -112,6 +119,50 @@
         private static void SortTest(IBookService service)
         {
             ShowBooks(service.SortBooks(service.BookTitleComparer));
+        }
+
+        private static void FormatTest(IBookService service)
+        {
+            var books = service.GetBooks();
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(book.ToString(Book.OutputFormat.AT.ToString()));
+            }
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(book.ToString(Book.OutputFormat.ATPY.ToString()));
+            }
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(book.ToString(Book.OutputFormat.IATP.ToString()));
+            }
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(book.ToString(Book.OutputFormat.IATPYC.ToString()));
+            }
+
+            Console.WriteLine(new string('-', 80));
+        }
+
+        private static void FormatExtensionTest(IBookService service)
+        {
+            var books = service.GetBooks();
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(string.Format(new BookFormatter(), "{0:AC}", book));
+            }
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(string.Format(new BookFormatter(), "{0:TN}", book));
+            }
+
+            Console.WriteLine(new string('-', 80));
         }
     }
 }

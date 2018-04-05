@@ -1,11 +1,12 @@
 ﻿namespace BookLibrary.Models
 {
     using System;
+    using System.Globalization;
 
     /// <summary>
     /// A class describing the book.
     /// </summary>
-    public class Book : IEquatable<Book>, IComparable, IComparable<Book>
+    public class Book : IEquatable<Book>, IComparable, IComparable<Book>, IFormattable
     {
         #region private field
         private string _isbn;
@@ -41,6 +42,14 @@
 
         public Book()
         {
+        }
+
+        public enum OutputFormat
+        {
+            AT,
+            ATPY,
+            IATP,
+            IATPYC
         }
 
         #region property
@@ -325,6 +334,39 @@
         public override string ToString()
         {
             return Isbn;
+        }
+
+        public string ToString(string format)
+        {
+            if (string.IsNullOrEmpty(format))
+            {
+                return ToString();
+            }
+
+            return ToString(format, null);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (ReferenceEquals(formatProvider, null))
+            {
+                formatProvider = CultureInfo.CurrentCulture;
+            }
+
+            switch (format.Trim().ToUpper())
+            {
+                case nameof(OutputFormat.AT):
+                    return $"{Author}, {Title}";
+                case nameof(OutputFormat.ATPY):
+                    return $"{Author}, {Title}, {PublishingHouse}, {Year.ToString(formatProvider)}";
+                case nameof(OutputFormat.IATP):
+                    return $"ISBN 13: {Isbn}, {Author}, {Title}, {PublishingHouse}";
+                case nameof(OutputFormat.IATPYC):
+                    return $"ISBN 13: {Isbn}, {Author}, {Title}, {PublishingHouse}, {Year.ToString(formatProvider)}, " +
+                        $"{string.Format(formatProvider,"{0:C}",Cost)}";
+                default:
+                    throw new FormatException($"Unknown format - {format}");
+            }
         }
 
         /// <summary>

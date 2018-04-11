@@ -6,13 +6,17 @@
     using BookLibrary.Models;
     using BooksLibrary.Formatters;
     using BookStorage;
+    using Logger;
 
     public class Program
     {
         private static readonly string FilePath = @"data.bin";
+        private static ILogger _logger;
 
         public static void Main()
         {
+            _logger = LoggerCreater.GetLogger(nameof(Program));
+
             try
             {
                 IBookStorage bookRepository = new BookBinaryStorage(FilePath);
@@ -47,7 +51,7 @@
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _logger.Error("An error has occurred. See details", e);
             }
 
             Console.ReadLine();

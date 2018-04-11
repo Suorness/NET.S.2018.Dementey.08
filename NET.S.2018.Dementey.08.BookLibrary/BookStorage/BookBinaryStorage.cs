@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Logger;
 
     /// <summary>
     /// A data warehouse using binary files.
@@ -10,6 +11,7 @@
     public class BookBinaryStorage : IBookStorage
     {
         private readonly string _filePath;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Creation of a service instance.
@@ -21,6 +23,8 @@
         public BookBinaryStorage(string filePath)
         {
             _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+            _logger = LoggerCreater.GetLogger(nameof(BookBinaryStorage));
+            _logger.Info("Storage was created");
         }
 
         public IEnumerable<BookDal> GetBooks()
@@ -48,6 +52,8 @@
                     WriteBook(writer, book);
                 }
             }
+
+            _logger.Info("The books were recorded.");
         }
 
         private void WriteBook(BinaryWriter writer, BookDal book)
